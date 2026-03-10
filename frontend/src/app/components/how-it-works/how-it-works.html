@@ -1,0 +1,82 @@
+<app-navbar />
+
+<section class="hiw-hero">
+  <div class="container">
+    <div class="badge">⚙️ Architecture</div>
+    <h1>How It Works</h1>
+    <p class="hero-sub">A multi-agent AI pipeline that plans, searches, critiques, and writes — all autonomously.</p>
+  </div>
+</section>
+
+<section class="flow-section">
+  <div class="container">
+    <div class="flow-diagram">
+      <div class="flow-node start">User Topic</div>
+      <div class="flow-arrow">↓</div>
+      <div class="agent-cards">
+        <div class="agent-card card" *ngFor="let agent of agents; let last = last">
+          <div class="agent-header" [style.borderColor]="agent.color">
+            <span class="agent-icon">{{ agent.icon }}</span>
+            <div>
+              <h3>{{ agent.name }}</h3>
+              <div class="io-tags">
+                <span class="io-tag in">IN: {{ agent.input }}</span>
+                <span class="io-tag out">OUT: {{ agent.output }}</span>
+              </div>
+            </div>
+          </div>
+          <p class="agent-desc">{{ agent.desc }}</p>
+          <div class="agent-tools">
+            <span class="tool-chip" *ngFor="let tool of agent.tools">{{ tool }}</span>
+          </div>
+          <div class="agent-arrow" *ngIf="!last">↓</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node end">📄 Research Report</div>
+    </div>
+  </div>
+</section>
+
+<section class="loop-section">
+  <div class="container">
+    <div class="loop-card card">
+      <h2>The Self-Correction Loop</h2>
+      <p>If the Critic determines sources are insufficient, it sends the Researcher back for another pass — up to 2 iterations. This ensures report quality even for difficult topics.</p>
+      <div class="loop-diagram">
+        <span class="loop-node">Researcher</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node">Critic</span>
+        <span class="loop-arrow loop-back">← needs more (max 2x)</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node highlight">Writer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack-section">
+  <div class="container">
+    <h2 class="section-title">Tech Stack</h2>
+    <p class="section-sub">100% free and open source</p>
+    <div class="stack-grid">
+      <div class="stack-item card" *ngFor="let tech of techStack">
+        <div class="stack-top">
+          <strong>{{ tech.name }}</strong>
+          <span class="stack-tag">{{ tech.tag }}</span>
+        </div>
+        <p>{{ tech.desc }}</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px">
+      <a routerLink="/research" class="btn-primary">Try It Now</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span style="color:white;font-weight:700">ResearchAI</span>
+    <span style="font-size:0.85rem;color:rgba(255,255,255,0.4)">Built with LangGraph · Groq · Angular</span>
+  </div>
+</footer>

@@ -1,0 +1,59 @@
+<app-navbar />
+
+<section class="about-hero">
+  <div class="container">
+    <div class="badge">📖 About</div>
+    <h1>Why Research Matters</h1>
+    <p class="hero-sub">In an era of information overload, the ability to synthesize knowledge quickly is a superpower.</p>
+  </div>
+</section>
+
+<section class="about-content">
+  <div class="container">
+
+    <div class="about-grid">
+      <div class="about-main">
+
+        <div class="prose-section">
+          <h2>The Research Problem</h2>
+          <p>We live in a world where more information is produced every day than a person could read in a lifetime. Yet despite this abundance, <strong>quality synthesis remains scarce.</strong> Most people either skim surface-level summaries or spend hours sifting through papers they don't fully understand.</p>
+          <p>The gap between raw information and actionable insight is enormous — and it costs time, money, and opportunity every single day.</p>
+        </div>
+
+        <div class="prose-section">
+          <h2>Why Deep Research Still Matters</h2>
+          <p>In a world of tweets and summaries, the people who can go deep — who can read primary sources, synthesize contradictory views, and draw original conclusions — <strong>hold a significant advantage.</strong></p>
+          <p>Researchers, strategists, investors, engineers, and policy makers all depend on quality research to make decisions that shape the world. The quality of your research directly determines the quality of your decisions.</p>
+        </div>
+
+        <div class="prose-section">
+          <h2>Our Solution</h2>
+          <p>ResearchAI is an autonomous multi-agent system that handles the time-consuming parts of research: finding relevant sources, filtering noise, evaluating quality, and synthesizing findings into a readable report.</p>
+          <p>It doesn't replace human judgment — it <strong>amplifies your capacity to engage with complex topics</strong> quickly and thoroughly.</p>
+        </div>
+
+        <div class="prose-section">
+          <h2>Built on Proven Technology</h2>
+          <p>The pipeline uses <strong>LangGraph</strong> for agent orchestration, <strong>Groq's Llama 3.3 70B</strong> for reasoning, <strong>DuckDuckGo</strong> and <strong>ArXiv</strong> for sourcing — all free, all open. This project demonstrates that cutting-edge agentic AI is accessible to anyone willing to learn.</p>
+        </div>
+
+      </div>
+
+      <aside class="about-sidebar">
+        <div class="fact-card card" *ngFor="let fact of facts">
+          <div class="fact-icon">{{ fact.icon }}</div>
+          <h4>{{ fact.title }}</h4>
+          <p>{{ fact.body }}</p>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="brand-name" style="color:white;font-weight:700">ResearchAI</span>
+    <span style="font-size:0.85rem;color:rgba(255,255,255,0.4)">Built with LangGraph · Groq · Angular</span>
+  </div>
+</footer>

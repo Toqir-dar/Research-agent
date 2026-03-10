@@ -1,32 +1,28 @@
-# --- Virtual Environments ---
-venv/
-env/
-.env/
-ENV/
-bin/
-lib/
-include/
-share/
-pyvenv.cfg
+# Python virtual environment — thousands of files, never upload
+ml/venv/
 
-# --- Python Bytecode & Cache ---
-__pycache__/
-*.py[cod]
-*$py.class
+# Python cache files — auto-generated, not needed
+ml/__pycache__/
+ml/**/__pycache__/
 
-# --- Distribution / Packaging ---
-dist/
-build/
-*.egg-info/
-.installed.cfg
-*.egg
+# Secret keys — never upload to GitHub
+ml/.env
 
-# --- Environment Variables (Security) ---
-.env
-.flaskenv
+# Node dependencies — re-installed automatically on deploy
+backend/node_modules/
+frontend/node_modules/
 
-# --- IDEs & Editors ---
-.vscode/
-.idea/
+# Secret keys for backend
+backend/.env
+
+# Angular build cache — not needed
+frontend/.angular/
+
+# Angular compiled output — Vercel builds this fresh
+frontend/dist/
+
+# Mac junk files
 .DS_Store
-*.swp
+
+# Python compiled files
+*.pyc

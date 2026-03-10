@@ -1,0 +1,171 @@
+.hiw-hero {
+  background: var(--navy);
+  padding: 80px 0 60px;
+  color: white;
+  .badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+  h1 { font-size: 3rem; color: white; margin-bottom: 16px; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 480px; }
+}
+
+.flow-section {
+  padding: 80px 0;
+  background: var(--gray-50);
+
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .flow-node {
+    background: var(--navy);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    &.end { background: #0E9F6E; }
+  }
+
+  .flow-arrow {
+    font-size: 1.5rem;
+    color: var(--gray-400);
+    padding: 8px 0;
+  }
+
+  .agent-cards {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .agent-card {
+    border-radius: 0;
+    border-left-width: 3px;
+    border-left-style: solid;
+    position: relative;
+    margin: 0;
+    border-radius: 0;
+    border-top: none;
+
+    &:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-top: 1px solid var(--border); }
+    &:last-child  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+
+    .agent-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      border-left: 3px solid;
+      margin-left: -33px;
+      padding-left: 30px;
+
+      .agent-icon { font-size: 1.6rem; margin-top: 2px; }
+
+      h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+
+      .io-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+      .io-tag {
+        font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 4px;
+        &.in  { background: #EEF2FF; color: var(--blue); }
+        &.out { background: #F0FDF4; color: #0E9F6E; }
+      }
+    }
+
+    .agent-desc { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px; }
+
+    .agent-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tool-chip {
+      background: var(--gray-100);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.76rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    .agent-arrow {
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 1.2rem;
+      margin-top: 16px;
+    }
+  }
+}
+
+.loop-section {
+  padding: 0 0 80px;
+  background: var(--gray-50);
+
+  .loop-card {
+    max-width: 720px;
+    margin: 0 auto;
+    h2 { font-size: 1.4rem; color: var(--navy); margin-bottom: 12px; }
+    p  { color: var(--gray-600); font-size: 0.92rem; line-height: 1.7; margin-bottom: 24px; }
+  }
+
+  .loop-diagram {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .loop-node {
+      background: var(--blue-light);
+      color: var(--blue);
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      &.highlight { background: var(--blue); color: white; }
+    }
+
+    .loop-arrow { color: var(--gray-400); font-size: 1rem; font-weight: 600; }
+    .loop-back  { font-size: 0.78rem; color: #E3A008; font-weight: 500; }
+  }
+}
+
+.stack-section {
+  padding: 96px 0;
+
+  .section-title { font-size: 2rem; text-align: center; color: var(--navy); margin-bottom: 12px; }
+  .section-sub   { text-align: center; color: var(--text-muted); margin-bottom: 48px; }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .stack-item {
+    padding: 20px 24px;
+    .stack-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      strong { font-size: 0.95rem; color: var(--navy); }
+    }
+    .stack-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--blue-light);
+      color: var(--blue);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    p { font-size: 0.85rem; color: var(--text-muted); }
+  }
+}
+
+.footer {
+  background: var(--navy);
+  padding: 28px 0;
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+}

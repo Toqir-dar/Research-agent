@@ -1,0 +1,56 @@
+<app-navbar />
+
+<div class="report-page" *ngIf="!loading && result">
+  <div class="report-sidebar">
+    <div class="sidebar-inner">
+      <a routerLink="/research" class="btn-ghost back-btn">
+        ← New Research
+      </a>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Topic</div>
+        <p class="sidebar-topic">{{ result.topic }}</p>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Stats</div>
+        <div class="sidebar-stat" *ngFor="let stat of [
+          {label: 'Sources', value: result.sources_count},
+          {label: 'Words', value: result.word_count},
+          {label: 'Corrections', value: result.iterations}
+        ]">
+          <span>{{ stat.label }}</span>
+          <strong>{{ stat.value }}</strong>
+        </div>
+      </div>
+
+      <div class="sidebar-section" *ngIf="result.plan">
+        <div class="sidebar-label">Research Plan</div>
+        <ul class="sidebar-plan">
+          <li *ngFor="let task of result.plan">{{ task }}</li>
+        </ul>
+      </div>
+
+      <button class="btn-primary download-btn" (click)="downloadMarkdown()">
+        ↓ Download .md
+      </button>
+    </div>
+  </div>
+
+  <main class="report-main">
+    <div class="report-content">
+      <div class="report-body" [innerHTML]="reportHtml"></div>
+    </div>
+  </main>
+</div>
+
+<div class="loading-view" *ngIf="loading">
+  <div class="spinner-lg"></div>
+  <p>Loading report...</p>
+</div>
+
+<div class="error-view card" *ngIf="!loading && error">
+  <h3>❌ Report not found</h3>
+  <p>{{ error }}</p>
+  <a routerLink="/research" class="btn-ghost">Back to Research</a>
+</div>

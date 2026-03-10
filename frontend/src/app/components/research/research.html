@@ -1,0 +1,122 @@
+<app-navbar />
+
+<section class="research-page">
+  <div class="container">
+
+    <!-- Input state -->
+    <div class="research-header" *ngIf="status === 'idle'">
+      <div class="badge">🔬 New Research</div>
+      <h1>Start Your Research</h1>
+      <p class="sub">Enter any topic and our AI pipeline will produce a comprehensive report.</p>
+
+      <div class="input-card card">
+        <label class="input-label">Research Topic</label>
+        <div class="input-row">
+          <input
+            [(ngModel)]="topic"
+            (keyup.enter)="startResearch()"
+            placeholder="e.g. LSTM models for stock market forecasting..."
+            class="topic-input"
+          />
+          <button class="btn-primary" (click)="startResearch()" [disabled]="topic.trim().length < 5">
+            Start
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Running state -->
+    <div class="running-view" *ngIf="status === 'loading' || status === 'running'">
+      <div class="running-header">
+        <div class="spinner"></div>
+        <div>
+          <h2>Researching<span class="dots">...</span></h2>
+          <p class="topic-display">"{{ topic }}"</p>
+        </div>
+        <div class="elapsed-badge">{{ elapsed }}s</div>
+      </div>
+
+      <div class="stage-pipeline">
+        <div
+          class="stage-item"
+          *ngFor="let stage of stages; let i = index"
+          [class.active]="i === currentStageIndex"
+          [class.done]="i < currentStageIndex">
+          <div class="stage-icon">{{ stage.icon }}</div>
+          <div class="stage-info">
+            <div class="stage-label">{{ stage.label }}</div>
+            <div class="stage-desc" *ngIf="i === currentStageIndex">{{ stage.desc }}</div>
+          </div>
+          <div class="stage-check" *ngIf="i < currentStageIndex">✓</div>
+        </div>
+      </div>
+
+      <div class="info-note">
+        <span>💡</span>
+        <span>The pipeline searches multiple sources, evaluates quality, and may loop back for more research if needed. Average time: 20–60 seconds.</span>
+      </div>
+    </div>
+
+    <!-- Completed state -->
+    <div class="completed-view fade-up" *ngIf="status === 'completed' && result">
+      <div class="completed-header">
+        <div class="success-icon">✅</div>
+        <div>
+          <h2>Report Ready!</h2>
+          <p>Completed in {{ elapsed }}s · {{ result.sources_count }} sources · ~{{ result.word_count }} words</p>
+        </div>
+      </div>
+
+      <div class="result-meta card">
+        <div class="meta-row" *ngIf="result.plan">
+          <h4>Research Plan</h4>
+          <ul>
+            <li *ngFor="let task of result.plan">{{ task }}</li>
+          </ul>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-row" *ngIf="result.critique">
+          <h4>Critic's Assessment</h4>
+          <p>{{ result.critique }}</p>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-stats">
+          <div class="meta-stat">
+            <strong>{{ result.sources_count }}</strong>
+            <span>Sources</span>
+          </div>
+          <div class="meta-stat">
+            <strong>~{{ result.word_count }}</strong>
+            <span>Words</span>
+          </div>
+          <div class="meta-stat">
+            <strong>{{ result.iterations }}</strong>
+            <span>Correction loops</span>
+          </div>
+          <div class="meta-stat">
+            <strong>{{ elapsed }}s</strong>
+            <span>Total time</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-btns">
+        <button class="btn-primary" (click)="viewReport()">
+          Read Full Report
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost" (click)="reset()">New Research</button>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div class="error-view card" *ngIf="status === 'error'">
+      <div class="error-icon">❌</div>
+      <h3>Something went wrong</h3>
+      <p>{{ error }}</p>
+      <button class="btn-ghost" (click)="reset()">Try Again</button>
+    </div>
+
+  </div>
+</section>

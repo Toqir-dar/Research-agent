@@ -1,0 +1,105 @@
+<app-navbar />
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-text fade-up">
+        <div class="badge">🔬 AI-Powered Research</div>
+        <h1>Research anything.<br><em>Deeply. Instantly.</em></h1>
+        <p class="hero-sub">
+          Enter any topic and our autonomous AI pipeline plans, searches,
+          critiques, and writes a comprehensive research report — powered
+          entirely by free tools.
+        </p>
+      </div>
+
+      <div class="search-card card fade-up" style="animation-delay:0.1s">
+        <label class="search-label">What do you want to research?</label>
+        <div class="search-row">
+          <input
+            [(ngModel)]="topic"
+            (keyup.enter)="startResearch()"
+            placeholder="e.g. Impact of LLMs on software engineering..."
+            class="search-input"
+          />
+          <button
+            class="btn-primary"
+            (click)="startResearch()"
+            [disabled]="topic.trim().length < 5">
+            Research
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <div class="examples">
+          <span class="examples-label">Try:</span>
+          <button
+            *ngFor="let t of exampleTopics"
+            class="example-chip"
+            (click)="useTopic(t)">
+            {{ t }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-number">4</div>
+        <div class="stat-label">AI Agents working in sequence</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">~30s</div>
+        <div class="stat-label">Average report generation time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">9+</div>
+        <div class="stat-label">Sources per report (web + ArXiv)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Free — no paid APIs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How pipeline works (mini) -->
+<section class="pipeline-mini">
+  <div class="container">
+    <h2 class="section-title">How the pipeline works</h2>
+    <p class="section-sub">Four specialized agents collaborate to produce your report</p>
+
+    <div class="pipeline-steps">
+      <div class="step" *ngFor="let step of steps; let i = index">
+        <div class="step-num">{{ i + 1 }}</div>
+        <div class="step-icon">{{ step.icon }}</div>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.desc }}</p>
+      </div>
+    </div>
+
+    <div class="pipeline-cta">
+      <a routerLink="/how-it-works" class="btn-ghost">
+        Learn more about the architecture
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="brand-name">ResearchAI</span>
+    <span class="footer-copy">Built with LangGraph · Groq · Angular</span>
+  </div>
+</footer>

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --navy:       #0D1B2A;
+  --ink:        #1B2B3B;
+  --blue:       #1A56DB;
+  --blue-mid:   #3B6FE8;
+  --blue-light: #EEF2FF;
+  --blue-pale:  #F5F7FF;
+  --white:      #FFFFFF;
+  --gray-50:    #F8FAFC;
+  --gray-100:   #F1F5F9;
+  --gray-200:   #E2E8F0;
+  --gray-400:   #94A3B8;
+  --gray-600:   #475569;
+  --gray-800:   #1E293B;
+  --text:       #0D1B2A;
+  --text-muted: #64748B;
+  --border:     #E2E8F0;
+  --radius:     12px;
+  --radius-lg:  20px;
+  --shadow:     0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg:  0 8px 32px rgba(13,27,42,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+  line-height: 1.2;
+}
+
+a { text-decoration: none; color: inherit; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--gray-400); border-radius: 10px; }
+
+// ── Shared utility classes ───────────────────────────────────
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: var(--blue-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(26, 86, 219, 0.3);
+  }
+  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--gray-600);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-pale);
+  }
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+// ── Animations ───────────────────────────────────────────────
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+// ── Markdown report styles ───────────────────────────────────
+.report-body {
+  font-size: 1.0rem;
+  line-height: 1.8;
+  color: var(--gray-800);
+
+  h1 { font-size: 2rem; margin: 0 0 24px; color: var(--navy); }
+  h2 { font-size: 1.4rem; margin: 40px 0 16px; color: var(--navy);
+       padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.1rem; margin: 28px 0 12px; color: var(--ink); }
+  p  { margin-bottom: 16px; }
+  ul, ol { padding-left: 24px; margin-bottom: 16px; li { margin-bottom: 8px; } }
+  strong { font-weight: 600; color: var(--navy); }
+  em     { font-style: italic; color: var(--gray-600); }
+  blockquote {
+    border-left: 3px solid var(--blue);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--blue-pale);
+    border-radius: 0 8px 8px 0;
+    color: var(--gray-600);
+  }
+  code {
+    background: var(--gray-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    color: var(--blue);
+  }
+  a { color: var(--blue); text-decoration: underline; }
+}
