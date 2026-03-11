@@ -313,10 +313,10 @@ MIT License — free to use, modify, and distribute.
 
 ## 👤 Author
 
-Built by **[Your Name]**
+Built by **[Toqir dar]**
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
+- GitHub: [@Toqir-dar](https://github.com/Toqir-dar)
+- LinkedIn: [Toqir dar](https://www.linkedin.com/in/toqir-dar007/)
 
 ---
 
