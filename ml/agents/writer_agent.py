@@ -42,7 +42,7 @@ Rules:
 
 
 def writer_agent(state: ResearchState) -> ResearchState:
-    print(f"\n✍️  Writer Agent: Synthesizing report...")
+    print(f"\nWriter Agent: Synthesizing report...")
 
     # Filter failed sources
     usable = [

@@ -25,5 +25,5 @@ def search_arxiv(query: str, max_results: int = 3) -> list[dict]:
             })
         return results
     except Exception as e:
-        print(f"⚠️ ArXiv error: {e}")
+        print(f"ArXiv error: {e}")
         return []

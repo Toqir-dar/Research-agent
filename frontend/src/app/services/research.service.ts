@@ -8,9 +8,9 @@ import { ResearchRequest, JobStatus, ResearchResult } from '../models/research.m
 @Injectable({ providedIn: 'root' })
 export class ResearchService {
 
-  private readonly API = '/api';   // proxied to Express :3000
+  private readonly API = 'https://toqir12-research-agent-backend.hf.space/api';  // proxied to Express :3000
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Starts a new research job

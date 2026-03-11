@@ -22,9 +22,9 @@ def duckduckgo_search(query: str) -> list[dict]:
             if results:
                 break
         except Exception as e:
-            print(f"⚠️ Search attempt {attempt + 1} failed: {e}")
+            print(f"Search attempt {attempt + 1} failed: {e}")
             time.sleep(2)
 
     if not results:
-        print("⚠️ DuckDuckGo unavailable — ArXiv will still provide sources.")
+        print("DuckDuckGo unavailable — ArXiv will still provide sources.")
     return results

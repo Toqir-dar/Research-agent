@@ -37,12 +37,12 @@ Respond ONLY with valid JSON — no explanation, no markdown fences:
 
 
 def critic_agent(state: ResearchState) -> ResearchState:
-    print(f"\n🔎 Critic Agent: Reviewing {len(state.get('raw_sources', []))} sources...")
+    print(f"\nCritic Agent: Reviewing {len(state.get('raw_sources', []))} sources...")
     print(f"   Current iteration: {state.get('iteration', 0)}")
 
     # Hard cap — force proceed after 2 iterations regardless
     if state.get("iteration", 0) >= 2:
-        print("   ⚠️  Max iterations reached — forcing Writer")
+        print("   Max iterations reached — forcing Writer")
         state["needs_more_research"] = False
         state["critique"] = "Max iterations reached. Proceeding with available sources."
         state["status"] = "critiqued"
@@ -77,24 +77,24 @@ def critic_agent(state: ResearchState) -> ResearchState:
         state["status"] = "critiqued"
 
         coverage = parsed.get("coverage", {})
-        print(f"   📊 Sufficient sources : {coverage.get('sufficient_sources')}")
-        print(f"   📊 Has academic source: {coverage.get('has_academic_source')}")
-        print(f"   📊 Covers all subtasks: {coverage.get('covers_all_subtasks')}")
-        print(f"   💬 Critique: {state['critique'][:100]}...")
+        print(f"   Sufficient sources : {coverage.get('sufficient_sources')}")
+        print(f"   Has academic source: {coverage.get('has_academic_source')}")
+        print(f"   Covers all subtasks: {coverage.get('covers_all_subtasks')}")
+        print(f"   Critique: {state['critique'][:100]}...")
 
         if state["needs_more_research"]:
-            print(f"   🔁 Decision: Needs more research")
+            print(f"   Decision: Needs more research")
         else:
-            print(f"   ✅ Decision: Sources sufficient — proceeding to Writer")
+            print(f"   Decision: Sources sufficient — proceeding to Writer")
 
     except json.JSONDecodeError as e:
-        print(f"⚠️  JSON parse error: {e} — defaulting to sufficient")
+        print(f"JSON parse error: {e} — defaulting to sufficient")
         state["needs_more_research"] = False
         state["critique"] = "Could not parse critique — proceeding with available sources."
         state["status"] = "critiqued_fallback"
 
     except Exception as e:
-        print(f"❌ Critic error: {e}")
+        print(f"Critic error: {e}")
         state["needs_more_research"] = False
         state["error"] = str(e)
         state["status"] = "error"

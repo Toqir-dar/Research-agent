@@ -7,11 +7,15 @@ const researchRoutes = require('./routes/research.routes');
 const errorHandler   = require('./middleware/errorHandler');
 
 const app  = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7860;
 
 // ── Middleware ──────────────────────────────────────────────────
 app.use(cors({
-  origin:         'http://localhost:4200',
+  origin: [
+    'http://localhost:4200',
+    'https://toqir12-research-agent-ml.hf.space',
+    /\.vercel\.app$/,   // allows any vercel subdomain
+  ],
   methods:        ['GET', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -46,16 +50,15 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 // ── Start ───────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\nExpress running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\nExpress running on port ${PORT}`);
   console.log(`ML API target : ${process.env.ML_API_URL}`);
-  console.log(`CORS origin   : http://localhost:4200`);
   console.log(`Endpoints ready:\n`);
-  console.log(`   GET    http://localhost:${PORT}/api/health`);
-  console.log(`   POST   http://localhost:${PORT}/api/research`);
-  console.log(`   GET    http://localhost:${PORT}/api/research/:jobId`);
-  console.log(`   DELETE http://localhost:${PORT}/api/research/:jobId`);
-  console.log(`   GET    http://localhost:${PORT}/api/jobs\n`);
+  console.log(`   GET    /api/health`);
+  console.log(`   POST   /api/research`);
+  console.log(`   GET    /api/research/:jobId`);
+  console.log(`   DELETE /api/research/:jobId`);
+  console.log(`   GET    /api/jobs\n`);
 });
 
 module.exports = app;

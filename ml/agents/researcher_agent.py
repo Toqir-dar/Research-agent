@@ -14,7 +14,7 @@ def researcher_agent(state: ResearchState) -> ResearchState:
     Uses DuckDuckGo for web sources and ArXiv for academic papers.
     Last query in the list is always sent to ArXiv.
     """
-    print(f"\n🔍 Researcher Agent: Gathering sources...")
+    print(f"\nResearcher Agent: Gathering sources...")
 
     queries = state.get("search_queries") or [state["topic"]]
     raw_sources = state.get("raw_sources") or []  # preserve sources if looping
@@ -24,7 +24,7 @@ def researcher_agent(state: ResearchState) -> ResearchState:
     arxiv_query = queries[-1]
 
     for query in web_queries:
-        print(f"   🌐 Web search: '{query}'")
+        print(f"   Web search: '{query}'")
         results = duckduckgo_search(query)
 
         for r in results[:2]:  # top 2 per query
@@ -40,7 +40,7 @@ def researcher_agent(state: ResearchState) -> ResearchState:
             })
 
     # ── ArXiv Academic Search (last query) ────────────────────
-    print(f"   📚 ArXiv search: '{arxiv_query}'")
+    print(f"   ArXiv search: '{arxiv_query}'")
     papers = search_arxiv(arxiv_query, max_results=3)
 
     for paper in papers:
@@ -60,8 +60,8 @@ def researcher_agent(state: ResearchState) -> ResearchState:
     # Summary
     web_count   = sum(1 for s in raw_sources if s["source_type"] == "web")
     arxiv_count = sum(1 for s in raw_sources if s["source_type"] == "arxiv")
-    print(f"\n✅ Sources gathered: {len(raw_sources)} total")
-    print(f"   🌐 Web:   {web_count}")
-    print(f"   📚 ArXiv: {arxiv_count}")
+    print(f"\nSources gathered: {len(raw_sources)} total")
+    print(f"   Web:   {web_count}")
+    print(f"   ArXiv: {arxiv_count}")
 
     return state

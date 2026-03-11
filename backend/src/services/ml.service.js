@@ -9,7 +9,7 @@ const mlClient = axios.create({
 
 // Log every ML API call
 mlClient.interceptors.request.use(req => {
-  console.log(`   📡 ML API → ${req.method.toUpperCase()} ${req.baseURL}${req.url}`);
+  console.log(`   ML API -> ${req.method.toUpperCase()} ${req.baseURL}${req.url}`);
   return req;
 });
 

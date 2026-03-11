@@ -11,7 +11,7 @@ def should_continue_research(state: ResearchState) -> str:
     iteration = state.get("iteration", 0)
     needs_more = state.get("needs_more_research", False)
 
-    print(f"\n🔀 Router check: needs_more={needs_more}, iteration={iteration}")
+    print(f"\nRouter check: needs_more={needs_more}, iteration={iteration}")
 
     if needs_more and iteration < 2:
         return "increment"
@@ -20,7 +20,7 @@ def should_continue_research(state: ResearchState) -> str:
 
 def increment_node(state: ResearchState) -> ResearchState:
     new_iter = state.get("iteration", 0) + 1
-    print(f"⬆️  Incrementing iteration: {state.get('iteration', 0)} → {new_iter}")
+    print(f"Incrementing iteration: {state.get('iteration', 0)} -> {new_iter}")
     return {
         **state,
         "iteration": new_iter,
@@ -73,7 +73,7 @@ def run_research(topic: str) -> ResearchState:
     }
 
     print(f"\n{'='*50}")
-    print(f"🚀 Starting Research Pipeline")
+    print(f"Starting Research Pipeline")
     print(f"   Topic: {topic}")
     print(f"{'='*50}")
 
@@ -83,7 +83,7 @@ def run_research(topic: str) -> ResearchState:
     )
 
     print(f"\n{'='*50}")
-    print(f"🏁 Pipeline Complete!")
+    print(f"Pipeline Complete!")
     print(f"   Status    : {final_state['status']}")
     print(f"   Sources   : {len(final_state.get('raw_sources', []))}")
     print(f"   Iterations: {final_state.get('iteration', 0)}")

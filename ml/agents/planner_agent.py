@@ -37,7 +37,7 @@ def planner_agent(state: ResearchState) -> ResearchState:
     - Input:  state['topic']
     - Output: state['plan'], state['search_queries'], state['status']
     """
-    print(f"\n🧠 Planner Agent: Planning '{state['topic']}'...")
+    print(f"\nPlanner Agent: Planning '{state['topic']}'...")
 
     try:
         chain = PLANNER_PROMPT | llm
@@ -53,13 +53,13 @@ def planner_agent(state: ResearchState) -> ResearchState:
         state["search_queries"] = parsed["search_queries"]
         state["status"] = "planned"
 
-        print(f"✅ Plan created: {len(state['plan'])} tasks")
-        print(f"✅ Queries generated: {len(state['search_queries'])}")
+        print(f"Plan created: {len(state['plan'])} tasks")
+        print(f"Queries generated: {len(state['search_queries'])}")
         for i, task in enumerate(state["plan"], 1):
             print(f"   Task {i}: {task}")
 
     except json.JSONDecodeError as e:
-        print(f"⚠️ JSON parse error: {e}")
+        print(f"JSON parse error: {e}")
         print(f"   Raw response: {response.content[:200]}")
         # Graceful fallback
         state["plan"] = [f"Research {state['topic']} comprehensively"]
@@ -72,7 +72,7 @@ def planner_agent(state: ResearchState) -> ResearchState:
         state["status"] = "planned_fallback"
 
     except Exception as e:
-        print(f"❌ Planner error: {e}")
+        print(f"Planner error: {e}")
         state["error"] = str(e)
         state["status"] = "error"
 

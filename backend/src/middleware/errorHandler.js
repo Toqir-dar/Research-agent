@@ -5,7 +5,7 @@
  * Always returns clean JSON to Angular, never crashes the server
  */
 const errorHandler = (err, req, res, next) => {
-  console.error(`❌ [${req.method} ${req.path}]`, err.message);
+  console.error(`[${req.method} ${req.path}]`, err.message);
 
   // Axios error from ML API
   if (err.code === 'ECONNREFUSED') {

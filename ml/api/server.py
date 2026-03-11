@@ -25,7 +25,7 @@ app = FastAPI(
 # Allow Express backend to call this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Express backend
+    allow_origins=["*"],  # open for now, lock down after deployment
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -73,7 +73,7 @@ def run_research_job(job_id: str, topic: str):
     """
     try:
         jobs[job_id]["status"] = "running"
-        print(f"\n🔬 Job {job_id}: Starting research on '{topic}'")
+        print(f"\nJob {job_id}: Starting research on '{topic}'")
 
         final_state = run_research(topic)
 
@@ -82,7 +82,7 @@ def run_research_job(job_id: str, topic: str):
             "completed_at": datetime.utcnow().isoformat(),
             "state":        final_state,
         })
-        print(f"✅ Job {job_id}: Completed")
+        print(f"Job {job_id}: Completed")
 
     except Exception as e:
         jobs[job_id].update({
@@ -90,7 +90,7 @@ def run_research_job(job_id: str, topic: str):
             "completed_at": datetime.utcnow().isoformat(),
             "error":        str(e),
         })
-        print(f"❌ Job {job_id}: Error — {e}")
+        print(f"Job {job_id}: Error — {e}")
 
 
 # ── Routes ────────────────────────────────────────────────────────
