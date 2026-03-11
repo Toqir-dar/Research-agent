@@ -1,15 +1,24 @@
 .hiw-hero {
   background: var(--navy);
-  padding: 80px 0 60px;
+  padding: 50px 0 40px;
   color: white;
-  .badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); margin-bottom: 20px; }
-  h1 { font-size: 3rem; color: white; margin-bottom: 16px; }
-  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 480px; }
+
+  @media (min-width: 768px) {
+    padding: 80px 0 60px;
+  }
+
+  .badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); margin-bottom: 16px; @media (min-width: 768px) { margin-bottom: 20px; } }
+  h1 { font-size: clamp(1.8rem, 5vw, 3rem); color: white; margin-bottom: 12px; @media (min-width: 768px) { font-size: 3rem; margin-bottom: 16px; } }
+  .hero-sub { font-size: 0.95rem; color: rgba(255,255,255,0.65); max-width: 480px; @media (min-width: 768px) { font-size: 1.05rem; } }
 }
 
 .flow-section {
-  padding: 80px 0;
+  padding: 50px 0 60px;
   background: var(--gray-50);
+
+  @media (min-width: 768px) {
+    padding: 80px 0;
+  }
 
   .flow-diagram {
     display: flex;
@@ -21,17 +30,28 @@
   .flow-node {
     background: var(--navy);
     color: white;
-    padding: 12px 32px;
+    padding: 10px 20px;
     border-radius: 100px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+
+    @media (min-width: 768px) {
+      padding: 12px 32px;
+      font-size: 0.95rem;
+    }
+
     &.end { background: #0E9F6E; }
   }
 
   .flow-arrow {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--gray-400);
-    padding: 8px 0;
+    padding: 6px 0;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      padding: 8px 0;
+    }
   }
 
   .agent-cards {
@@ -48,8 +68,11 @@
     border-left-style: solid;
     position: relative;
     margin: 0;
-    border-radius: 0;
-    border-top: none;
+    padding: 20px;
+
+    @media (min-width: 768px) {
+      padding: 24px;
+    }
 
     &:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-top: 1px solid var(--border); }
     &:last-child  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
@@ -57,44 +80,64 @@
     .agent-header {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
       margin-bottom: 12px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
       border-left: 3px solid;
-      margin-left: -33px;
-      padding-left: 30px;
+      margin-left: -20px;
+      padding-left: 17px;
 
-      .agent-icon { font-size: 1.6rem; margin-top: 2px; }
+      @media (min-width: 768px) {
+        gap: 16px;
+        margin-left: -33px;
+        padding-left: 30px;
+      }
 
-      h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+      .agent-icon { font-size: 1.4rem; margin-top: 2px; @media (min-width: 768px) { font-size: 1.6rem; } }
 
-      .io-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+      h3 { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; @media (min-width: 768px) { font-size: 1rem; } }
+
+      .io-tags { display: flex; gap: 6px; flex-wrap: wrap; @media (min-width: 768px) { gap: 8px; } }
       .io-tag {
-        font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 4px;
+        font-size: 0.65rem; font-weight: 600; padding: 3px 8px; border-radius: 4px;
+        @media (min-width: 768px) {
+          font-size: 0.72rem;
+          padding: 3px 10px;
+        }
         &.in  { background: #EEF2FF; color: var(--blue); }
         &.out { background: #F0FDF4; color: #0E9F6E; }
       }
     }
 
-    .agent-desc { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px; }
+    .agent-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 12px; @media (min-width: 768px) { font-size: 0.9rem; line-height: 1.7; } }
 
-    .agent-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+    .agent-tools { display: flex; gap: 6px; flex-wrap: wrap; @media (min-width: 768px) { gap: 8px; } }
     .tool-chip {
       background: var(--gray-100);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 3px 10px;
-      font-size: 0.76rem;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 0.65rem;
       color: var(--gray-600);
       font-weight: 500;
+
+      @media (min-width: 768px) {
+        padding: 3px 10px;
+        font-size: 0.76rem;
+      }
     }
 
     .agent-arrow {
       text-align: center;
       color: var(--gray-400);
-      font-size: 1.2rem;
-      margin-top: 16px;
+      font-size: 1rem;
+      margin-top: 12px;
+
+      @media (min-width: 768px) {
+        font-size: 1.2rem;
+        margin-top: 16px;
+      }
     }
   }
 }

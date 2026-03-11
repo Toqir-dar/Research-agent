@@ -1,21 +1,35 @@
 <nav class="navbar">
   <div class="container nav-inner">
 
-    <a routerLink="/" class="brand">
+    <a routerLink="/" class="brand" (click)="menuOpen = false">
       <div class="brand-icon">R</div>
       <span class="brand-name">ResearchAI</span>
     </a>
 
-    <ul class="nav-links">
-      <li><a routerLink="/"            routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
-      <li><a routerLink="/how-it-works" routerLinkActive="active">How It Works</a></li>
-      <li><a routerLink="/about"        routerLinkActive="active">About</a></li>
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li><a routerLink="/"            routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="menuOpen = false">Home</a></li>
+      <li><a routerLink="/how-it-works" routerLinkActive="active" (click)="menuOpen = false">How It Works</a></li>
+      <li><a routerLink="/about"        routerLinkActive="active" (click)="menuOpen = false">About</a></li>
+      <li class="cta-mobile">
+        <a routerLink="/research" class="btn-primary" (click)="menuOpen = false">
+          Start Research
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </li>
     </ul>
 
-    <a routerLink="/research" class="btn-primary nav-cta">
-      Start Research
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <div class="nav-right">
+      <a routerLink="/research" class="btn-primary nav-cta">
+        Start Research
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <button class="hamburger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
   </div>
 </nav>

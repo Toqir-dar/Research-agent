@@ -11,4 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
